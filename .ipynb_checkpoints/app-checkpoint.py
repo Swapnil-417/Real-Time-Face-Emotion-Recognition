@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import streamlit as st
+from PIL import Image
 from tensorflow.keras.models import model_from_json
 from tensorflow.keras.preprocessing.image import img_to_array
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
@@ -71,6 +72,9 @@ def main():
 
 
     if choice == "Home":
+
+        image = Image.open('emotions.png')
+        st.image(image)
 
         st.markdown("<br>", unsafe_allow_html=True)
 
