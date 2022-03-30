@@ -1,5 +1,4 @@
 streamlit==1.2.0
 tensorflow-cpu
-numpy==1.20.3
 streamlit-webrtc==0.31.2
-opencv-python-headless==4.1.2.30
+opencv-python-headless
