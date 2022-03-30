@@ -1,10 +1,12 @@
-import cv2
 import numpy as np
+import cv2
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import streamlit as st
-from PIL import Image
-from tensorflow.keras.models import model_from_json
-from tensorflow.keras.preprocessing.image import img_to_array
-from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
+from tensorflow import keras
+from keras.models import model_from_json
+from keras.preprocessing.image import img_to_array
+from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfiguration, VideoProcessorBase, WebRtcMode
 
 #Reading the model from JSON file
 with open('model.json', 'r') as json_file:
@@ -16,7 +18,6 @@ classifier = model_from_json(json_savedModel)
 # emotions 
 emotion_dict = ["Angry","Disgust","Fear","Happy","Neutral","Sad","Surprise"]
 
-
 # load weights into new model
 classifier.load_weights("final_model_weights.h5")
 
@@ -25,6 +26,10 @@ try:
     face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 except Exception:
     st.write("Error loading cascade classifiers")
+
+
+RTC_CONFIGURATION = RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]})
+
 
 class VideoTransformer(VideoTransformerBase):
     def transform(self, frame):
@@ -73,9 +78,6 @@ def main():
 
     if choice == "Home":
 
-        image = Image.open('emotions.png')
-        st.image(image)
-
         st.markdown("<br>", unsafe_allow_html=True)
 
         html_temp1 = """<div style="background-color:#191970";padding:10px">
@@ -90,7 +92,8 @@ def main():
         #add space
         #         st.markdown("<br>", unsafe_allow_html=True)
 
-        webrtc_streamer(key="example", video_transformer_factory=VideoTransformer)
+        webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV, rtc_configuration=RTC_CONFIGURATION,
+                        video_processor_factory=VideoTransformer)
 
         st.markdown(html_temp1, unsafe_allow_html=True)
 
@@ -127,16 +130,7 @@ def main():
 
         st.markdown(html_temp_copyright, unsafe_allow_html=True)
 
-    # elif choice == "Debug here":
-    #     st.error('''Faciing Problems''')
-    #     st.info('''
-    #                 > * Allow browser to access the camera
-    #                 > * If you have more than one camera , then select by using select device.
-    #                 > * If camera stucks please restart the webcam.
-    #                 > * If app stucks reload the page.
-    #                 > * Still cannot debug, feel free to Contact Us.
 
-    #              ''') 
     else:
         pass
     
