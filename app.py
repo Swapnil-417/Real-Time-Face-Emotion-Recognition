@@ -86,12 +86,13 @@ def main():
         #add paragraph text and position it in the center
         st.markdown("<p style='text-align:center'>Click on start to use your webcam</p>", unsafe_allow_html=True)
 
-        #add space
-        #         st.markdown("<br>", unsafe_allow_html=True)
 
         webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV, rtc_configuration=RTC_CONFIGURATION,
                         video_processor_factory=VideoTransformer)
 
+
+#       add space
+        st.markdown("<br>", unsafe_allow_html=True)
         st.markdown(html_temp1, unsafe_allow_html=True)
 
     elif choice == "About":
