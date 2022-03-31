@@ -66,9 +66,6 @@ def main():
     # Title #
     st.title("Real Time Face Emotion Recognition")
 
-    #add space
-    st.markdown("<br>", unsafe_allow_html=True)
-
     # activities
     activities = ["Home", "About", "Contact Us"]
     choice = st.sidebar.selectbox("Select from here", activities)
