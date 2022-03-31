@@ -99,9 +99,10 @@ def main():
 
     elif choice == "About":
 
-        st.subheader("About This App")
+#         st.subheader("<p style='text-align:center'>About</p>")
         html_temp4 = """
                         <div style="background-color:#FFD700;padding:10px">
+                        <h4 style="color:Black;text-align:center;">About</h4>
                         <h4 style="color:Black;text-align:center;">This Real Time Emotion Recognition web app is developed using Streamlit Framework, Opencv, Tensorflow and Keras library for demonstration purpose only. If you want to contact us, just head to sidebar and click on Contact Us. </h4>
                         <h4 style="color:Black;text-align:center;">Developed with ❤ by Swapnil & Harish</h4>
                         </div>
