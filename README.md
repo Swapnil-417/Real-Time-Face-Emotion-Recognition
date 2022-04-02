@@ -74,6 +74,9 @@ We build a simple Convolutional Neural Network model of Sequential type consisti
 
 For model deployment we created a front end using streamlit for web app and used streamlit-webrtc which helped us to deal with real time video streams. We used Haar-cascade for the detection of faces and OpenCV to read frames and image processing. We deployed this model on the streamlit cloud platform.
 
+Streamlit share link :- https://share.streamlit.io/swapnil-417/real-time-face-emotion-recognition/main/app.py
+
+
 # Conclusion
 [(Back to top)](#table-of-contents)
 
