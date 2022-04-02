@@ -6,7 +6,7 @@ import streamlit as st
 from tensorflow import keras
 from keras.models import model_from_json
 from keras.preprocessing.image import img_to_array
-from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfiguration, VideoProcessorBase, WebRtcMode
+from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
 
 #Reading the model from JSON file
 with open('model.json', 'r') as json_file:
@@ -27,8 +27,6 @@ try:
 except Exception:
     st.write("Error loading cascade classifiers")
 
-
-RTC_CONFIGURATION = RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]})
 
 
 class VideoTransformer(VideoTransformerBase):
@@ -92,8 +90,8 @@ def main():
         #add space
         #         st.markdown("<br>", unsafe_allow_html=True)
 
-        webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV, rtc_configuration=RTC_CONFIGURATION,
-                        video_processor_factory=VideoTransformer)
+        webrtc_streamer(key="example",
+                        video_transformer_factory=VideoTransformer)
 
         st.markdown(html_temp1, unsafe_allow_html=True)
 
