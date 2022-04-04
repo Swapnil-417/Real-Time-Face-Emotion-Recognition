@@ -1,9 +1,14 @@
-.jpg
-.png
-.ipynb
-/Real Time Face Emotion Recognition
-/Real Time Face Emotion Recognition/test.py
-/results
+*.jpg
+*.png
+*.zip
+*.ipynb
+./Real Time Face Emotion Recognition
+./Real Time Face Emotion Recognition/test.py
+./results
 README.md
-/data/archive
+./data
+./data/archive
 LICENSE
+.ipynb_checkpoints
+Presentation.pdf
+Demo-Preview.mp4
