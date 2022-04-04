@@ -76,6 +76,8 @@ For model deployment we created a front end using streamlit for web app and used
 
 Streamlit share link :- https://share.streamlit.io/swapnil-417/real-time-face-emotion-recognition/main/app.py
 
+Heroku app link :- https://live-face-emotion-detection.herokuapp.com/
+
 
 # Conclusion
 [(Back to top)](#table-of-contents)
